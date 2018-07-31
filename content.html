@@ -11,7 +11,7 @@
   		<!-- Google Fonts -->
   		<link href='https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700' rel='stylesheet' type='text/css'>
   		<!-- Font Awesome -->
-  		<link href='./css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   		<!-- Style -->
   		<link href='./css/style.css' rel='stylesheet' type='text/css'>
       <!-- openlayer -->
@@ -40,33 +40,41 @@
               <!-- OSM map -->
               <div id="map" class="map"></div>
   					</div>
-            <!-- image file -->
-            <div class="col-md-2">
+            <!-- image -->
+            <div class="col-md-3">
               <br>
-              <input type='file' id="fileUpload"/>
-              <canvas id="canvas" width="512" height="512"></canvas>
+              <canvas id="canvas" width="256" height="256"></canvas>
+            </div>
+            <!-- image button -->
+            <div class="col-md-3">
+              <br>
+              <div class="row">
+                <div class="col-md-10 form-group">
+                  <input class="form-control" type="url" name="" placeholder="URL to your media">
+                </div>
+              </div>
+              <label class="btn2 btn-info2">
+                <input id="fileUpload" style="display:none;" type="file">
+                <i class="fa fa-picture-o" aria-hidden="true"></i> 上傳圖片
+              </label>
             </div>
             <!-- text -->
-  					<div class="col-md-10">
+  					<div class="col-md-6">
               <br>
-              <br>
-  						<form id="contact" method="post" class="form" role="form">
+  						<form method="post" class="form" role="form">
 							<div class="row">
-								<div class="col-md-6 form-group">
-									<input class="form-control" id="name" name="name" placeholder="Name" type="text" required />
-								</div>
-								<div class="col-md-6 form-group">
-									<input class="form-control" id="email" name="email" placeholder="Email" type="email" required />
+								<div class="col-md-12 form-group">
+									<input class="form-control" id="name" name="name" placeholder="Title" type="text" required />
 								</div>
 							</div>
 							<textarea class="form-control" id="message" name="message" placeholder="Message" rows="5"></textarea>
 							<br />
 							<div class="row">
-								<div class="col-md-12 form-group">
-									<button class="btn btn-primary" type="submit">Submit</button>
+								<div class="col-md-12 form-group" align="right">
+									<button class="btn2 btn-primary" type="submit">Submit</button>
 								</div>
 							</div>
-						</form>
+						  </form>
   					</div>
   				</div>
   			</div>

@@ -24,13 +24,13 @@ p.form-title
 
 form
 {
-    width: 250px;
+    width: 550px;
     margin: 0 auto;
 }
 
 form.login input[type="text"], form.login input[type="password"]
 {
-    width: 100%;
+    width: 50%;
     margin: 0;
     padding: 5px 10px;
     background: 0;
@@ -48,7 +48,7 @@ form.login input[type="text"], form.login input[type="password"]
 
 form.login input[type="submit"]
 {
-    width: 100%;
+    width: 50%;
     font-size: 14px;
     text-transform: uppercase;
     font-weight: 500;
@@ -210,6 +210,26 @@ form.login a:hover
 	padding: 0 30px;
 	line-height: 50px;
 }
+.btn2 {
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	white-space: nowrap;
+	padding: 10px 20px;
+	font-size: 14px;
+	line-height: 1.42857;
+	border-radius: 4px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
 .btn-xs {
 	padding: 0 20px;
 	line-height: 30px;
@@ -257,6 +277,16 @@ form.login a:hover
 	background-color: #3498db;
 }
 .btn-info:hover {
+	background-color: #2980b9;
+}
+
+.btn-info2 {
+	color:#fff;
+	background-color:#5bc0de;
+	border-color:#46b8da
+}
+
+.btn-info2:hover {
 	background-color: #2980b9;
 }
 
@@ -486,5 +516,4 @@ h2.section-title + p {
 }
 #canvas {
   border: 1px solid black;
-  margin-top: 10px;
 }

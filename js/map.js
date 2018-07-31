@@ -24,7 +24,7 @@ function readImage() {
            var img = new Image();
            img.src = e.target.result;
            img.onload = function() {
-             ctx.drawImage(img, 0, 0, 512, 512);
+             ctx.drawImage(img, 0, 0, 256, 256);
            };
         };       
         FR.readAsDataURL( this.files[0] );
