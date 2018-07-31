@@ -1,6 +1,6 @@
 // OSM map
 var map = new ol.Map({
-  target: 'map',
+  target: document.getElementById('map'),
   layers: [
     new ol.layer.Tile({
       source: new ol.source.OSM()
@@ -11,6 +11,20 @@ var map = new ol.Map({
     zoom: 4
   })
 });
+
+// serach OSM
+//Instantiate with some options and add the Control
+var geocoder = new Geocoder('nominatim', {
+  provider: 'osm',
+  lang: 'en',
+  placeholder: 'Search for ...',
+  limit: 5,
+  debug: false,
+  autoComplete: true,
+  keepOpen: true
+});
+map.addControl(geocoder);
+
 
 // show image
 var fileUpload = document.getElementById('fileUpload');

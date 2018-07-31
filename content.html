@@ -21,6 +21,12 @@
       <script src="./js/bootstrap.min.js"></script>
       <!-- openlayer -->
       <script src="./js/ol.js"></script>
+      <!-- OpenLayers Control Geocoder -->
+      <link rel="stylesheet" type="text/css" href="./ol-geocoder/ol-geocoder.min.css">
+      <script src="./ol-geocoder/ol-geocoder.js"></script>
+      <!-- openlayer popup-->
+      <link rel="stylesheet" type="text/css" href="./ol-geocoder/ol-popup.css">
+      <script src="./ol-geocoder/ol-popup.js"></script>
   
   	</head>
   	<body>
@@ -38,7 +44,7 @@
   					<div class="col-md-12 text-center">
   						<h2 class="section-title">Map Title</h2>
               <!-- OSM map -->
-              <div id="map" class="map"></div>
+              <div id="map" class="map" tabindex="0"></div>
   					</div>
             <!-- image -->
             <div class="col-md-3">
@@ -57,6 +63,14 @@
                 <input id="fileUpload" style="display:none;" type="file">
                 <i class="fa fa-picture-o" aria-hidden="true"></i> 上傳圖片
               </label>
+              <div class="row">
+                <div class="col-md-10 form-group">
+                  <br>
+                  <textarea class="form-control" id="message" name="Credit" placeholder="Credit" rows="1"></textarea>
+                  <br>
+                  <textarea class="form-control" id="message" name="Caption" placeholder="Caption" rows="2"></textarea>
+                </div>
+              </div>
             </div>
             <!-- text -->
   					<div class="col-md-6">
@@ -71,7 +85,7 @@
 							<br />
 							<div class="row">
 								<div class="col-md-12 form-group" align="right">
-									<button class="btn2 btn-primary" type="submit">Submit</button>
+									<button class="btn2 btn-primary" type="submit">完成</button>
 								</div>
 							</div>
 						  </form>
