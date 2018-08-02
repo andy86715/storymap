@@ -65,7 +65,7 @@ $(".butt").click(function() {
   }
 });
 
-// =
+// 側邊選單
 $(document).ready(function() {
   $(".navbar-brand2").on('click', function() {
     $(".theDiv").animate({width:'toggle'},350);
