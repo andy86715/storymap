@@ -55,3 +55,19 @@ canvas.onclick = function(e) {
   ctx.arc(x, y, 5, 0, Math.PI * 2);
   ctx.fill();
 };
+
+// Jquery add slide
+var i = 0;
+$(".butt").click(function() {
+  if (i < 10) {
+      $('<div style="display: none;"><button class="butt2">Untitled'+i+'</button></div>').appendTo($('.insert-links')).slideDown("fast");
+      i++;
+  }
+});
+
+// =
+$(document).ready(function() {
+  $(".navbar-brand2").on('click', function() {
+    $(".theDiv").animate({width:'toggle'},350);
+  });
+});

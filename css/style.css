@@ -340,6 +340,13 @@ form.login a:hover
 	font-size: 24px;
 	letter-spacing: -0.05em;
 }
+.navbar-brand2 {
+	color: black;
+	line-height: 80px;
+	font-weight: bold;
+	font-size: 24px;
+	cursor: pointer;
+}
 .navbar-nav>li>a {
 	font-weight: 600;
 	font-size: 12px;
@@ -516,4 +523,22 @@ h2.section-title + p {
 }
 #canvas {
   border: 1px solid black;
+}
+.butt {
+  border: 1px;
+  height:90px;
+  width:90px;
+  cursor:pointer;
+}
+.butt2 {	
+  border: 1px outset black;
+  height:90px;
+  width:90px;
+  cursor:pointer;
+}
+.theDiv{
+  border:1px;
+  width:8.33333333%;
+  height:500px;
+  overflow:auto;
 }

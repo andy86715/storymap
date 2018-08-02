@@ -19,6 +19,8 @@
 
       <!-- Bootstrap JavaScript -->
       <script src="./js/bootstrap.min.js"></script>
+      <!-- Jquery -->
+      <script src="./js/jquery.min.js"></script>
       <!-- openlayer -->
       <script src="./js/ol.js"></script>
       <!-- OpenLayers Control Geocoder -->
@@ -27,7 +29,7 @@
       <!-- openlayer popup-->
       <link rel="stylesheet" type="text/css" href="./ol-geocoder/ol-popup.css">
       <script src="./ol-geocoder/ol-popup.js"></script>
-  
+
   	</head>
   	<body>
   		<nav class="navbar navbar-default" role="navigation">
@@ -35,17 +37,26 @@
   				<div class="navbar-header">
   					<a class="navbar-brand" href="index.html">StorymapJS</a>
   				</div>
+          <div align="right" class="navbar-brand2">=</div>
   			</div>
   		</nav>
   		<!-- START SECTION -->
   		<div class="section">
   			<div class="container">
   				<div class="row">
-  					<div class="col-md-12 text-center">
+  					<div class="col-md-11 text-center">
   						<h2 class="section-title">Map Title</h2>
               <!-- OSM map -->
               <div id="map" class="map" tabindex="0"></div>
   					</div>
+            <!-- slide panel -->
+            <div class="theDiv" align="right">
+              <button class="butt2">Untitled</button>
+              <div class="insert-links"></div>
+              <hr width="150%">
+              <button class="butt">Add Slide</button>
+            </div>
+      <!-- 第二排 -->
             <!-- image -->
             <div class="col-md-3">
               <br>
@@ -55,7 +66,7 @@
             <div class="col-md-3">
               <br>
               <div class="row">
-                <div class="col-md-10 form-group">
+                <div class="col-md-12 form-group">
                   <input class="form-control" type="url" name="" placeholder="URL to your media">
                 </div>
               </div>
@@ -64,7 +75,7 @@
                 <i class="fa fa-picture-o" aria-hidden="true"></i> 上傳圖片
               </label>
               <div class="row">
-                <div class="col-md-10 form-group">
+                <div class="col-md-12 form-group">
                   <br>
                   <textarea class="form-control" id="message" name="Credit" placeholder="Credit" rows="1"></textarea>
                   <br>
@@ -72,17 +83,17 @@
                 </div>
               </div>
             </div>
-            <!-- text -->
-  					<div class="col-md-6">
+            <!-- title & message -->
+  					<div class="col-md-5">
               <br>
   						<form method="post" class="form" role="form">
 							<div class="row">
 								<div class="col-md-12 form-group">
 									<input class="form-control" id="name" name="name" placeholder="Title" type="text" required />
+                  <br />
+                  <textarea class="form-control" id="message" name="message" placeholder="Message" rows="5"></textarea>
 								</div>
 							</div>
-							<textarea class="form-control" id="message" name="message" placeholder="Message" rows="5"></textarea>
-							<br />
 							<div class="row">
 								<div class="col-md-12 form-group" align="right">
 									<button class="btn2 btn-primary" type="submit">完成</button>
@@ -100,7 +111,7 @@
   			<div class="container">
   				<div class="row">
   					<div class="col-md-12 margin-top-md text-center font-size-sm text-upercase">
-  						<p>© <a href="http://nomadtheme.com" title="nomadtheme"><strong>Nomad Theme</strong></a>. Images: <a href="http://picjumbo.com" title="PicJumbo"><strong>Pic Jumbo</strong></a>. By: <a href="http://freebootstraptemplate.com" title="Free Bootstrap Template"><strong>Free Bootstrap Template</strong></a>.</p>
+  						<p>© <a href="http://nomadtheme.com" title="nomadtheme"><strong>StorymapJS</strong></a>. Images: <a href="http://picjumbo.com" title="PicJumbo"><strong>Pic Jumbo</strong></a>. By: <a href="http://freebootstraptemplate.com" title="Free Bootstrap Template"><strong>SCU CLAB</strong></a>.</p>
   					</div>
   				</div>
   			</div>
