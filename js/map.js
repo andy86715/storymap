@@ -59,7 +59,6 @@ canvas.onclick = function(e) {
   ctx.beginPath();
   ctx.fillStyle = 'black';
   ctx.arc(x, y, 5, 0, Math.PI * 2);
-  ctx.fill();
 };
 
 // Jquery add slide
