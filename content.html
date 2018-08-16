@@ -66,17 +66,19 @@
             <!-- image button -->
             <div class="col-md-3">
               <br>
+              <!-- form -->
+              <form method="post" action="outjson.php" class="form" role="form">
               <div class="row">
-                <div class="col-md-12 form-group">
-                  <input class="form-control" type="url" name="" placeholder="URL to your media">
+                <div class="col-md-6 form-group">
+                  <input class="form-control" type="url" name="url" placeholder="URL to your media">
                 </div>
               </div>
               <label class="btn2 btn-info2">
-                <input id="fileUpload" style="display:none;" type="file">
+                <input id="fileUpload" style="display:none;" type="file" name='picture'>
                 <i class="fa fa-picture-o" aria-hidden="true"></i> 上傳圖片
               </label>
               <div class="row">
-                <div class="col-md-12 form-group">
+                <div class="col-md-6 form-group">
                   <br>
                   <textarea class="form-control" id="message" name="Credit" placeholder="Credit" rows="1"></textarea>
                   <br>
@@ -87,10 +89,9 @@
             <!-- title & message -->
   					<div class="col-md-5">
               <br>
-  						<form method="post" class="form" role="form">
 							<div class="row">
 								<div class="col-md-12 form-group">
-									<input class="form-control" id="name" name="name" placeholder="Title" type="text" required />
+									<input class="form-control" id="name" name="title" placeholder="Title" type="text" required />
                   <br />
                   <textarea class="form-control" id="message" name="message" placeholder="Message" rows="5"></textarea>
 								</div>
