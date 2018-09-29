@@ -100,6 +100,7 @@ var clickEvent = function () {
     pool[status] = {
       // lat: '',
       // lon: '',
+      url: '',
       credit: '',
       caption: '',
       title: '',
