@@ -12,6 +12,20 @@ var map = new ol.Map({
   })
 });
 
+// popup
+var popup = new ol.Overlay.Popup();
+map.addOverlay(popup);
+
+map.on('dblclick', function(evt) {
+    var prettyCoord = ol.coordinate.toStringHDMS(ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326'), 2);
+    popup.show(evt.coordinate, '<div>' + prettyCoord + '</div>');
+    var str = prettyCoord;
+    var str = str.replace("°","").replace("′","").replace("."," ").replace("″","").replace("°","").replace("′","").replace("."," ").replace("″","")
+    var res = str.split(" ");
+    var lat = res[0]+"."+res[1]+res[2]+res[3];
+    var lon = res[5]+"."+res[6]+res[7]+res[8];
+});
+
 // serach OSM
 //Instantiate with some options and add the Control
 var geocoder = new Geocoder('nominatim', {
@@ -71,6 +85,8 @@ var clickEvent = function () {
   $(this).css('background', '#999')
 
   pool[status] = {
+    // lat: lat,
+    // lon: lon,
     url: $('#url').val(),
     // canvas: $('#canvas').val(),
     credit: $('#Credit').val(),
@@ -79,13 +95,11 @@ var clickEvent = function () {
     message: $('#msg').val()
   }
 
-  // console.log(JSON.stringify(pool))
-
   status = id
   if (typeof pool[status] !== 'object') {
     pool[status] = {
-      url: '',
-      // canvas: '',
+      // lat: '',
+      // lon: '',
       credit: '',
       caption: '',
       title: '',
@@ -93,8 +107,9 @@ var clickEvent = function () {
     }
   }
 
+  // $('#lat').val(pool[status].lat)
+  // $('#lon').val(pool[status].lon)
   $('#url').val(pool[status].url)
-  // $('#canvas').val(pool[status].canvas)
   $('#Credit').val(pool[status].credit)
   $('#Caption').val(pool[status].caption)
   $('#title').val(pool[status].title)
@@ -116,8 +131,9 @@ $(".butt").click(function() {
 
 $("#btn-submit").click(function() {
   pool[status] = {
+    // lat: $('#lat').val(),
+    // lon: $('#lon').val(),
     url: $('#url').val(),
-    // canvas: $('#canvas').val(),
     credit: $('#Credit').val(),
     caption :$('#Caption').val(),
     title: $('#title').val(),
