@@ -2,7 +2,7 @@
 $img=$_FILES['file'];
 if(isset($_POST['submit'])){ 
 	if($img['name']==''){  
-		echo "<h2>An Image Please.</h2>";
+		echo "";
 	}else{
 		$filename = $img['tmp_name'];
 		$client_id="342e2089e5d8bdb";
@@ -21,13 +21,6 @@ if(isset($_POST['submit'])){
 		curl_close ($curl);
 		$pms = json_decode($out,true);
 		$url=$pms['data']['link'];
-		// if($url!=""){
-		// 	echo "<h2>Uploaded Without Any Problem</h2>";
-		// 	echo "<img src='$url'/>";
-		// }else{
-		// 	echo "<h2>There's a Problem</h2>";
-		// 	echo $pms['data']['error'];  
-		// } 
 	}
 }
 ?>

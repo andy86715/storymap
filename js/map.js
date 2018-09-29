@@ -46,7 +46,7 @@ function readImage() {
            img.onload = function() {
              ctx.drawImage(img, 0, 0, 256, 256);
            };
-        };       
+        };
         FR.readAsDataURL( this.files[0] );
     }
 }
@@ -62,12 +62,81 @@ canvas.onclick = function(e) {
 };
 
 // Jquery add slide
-var i = 0;
+var i = 1;
+var pool = {}
+var status = 'btn0'
+var clickEvent = function () {
+  var id = $(this).attr('id')
+  $('#' + status).css('background', '#fff')
+  $(this).css('background', '#999')
+
+  pool[status] = {
+    url: $('#url').val(),
+    // canvas: $('#canvas').val(),
+    credit: $('#Credit').val(),
+    caption :$('#Caption').val(),
+    title: $('#title').val(),
+    message: $('#msg').val()
+  }
+
+  // console.log(JSON.stringify(pool))
+
+  status = id
+  if (typeof pool[status] !== 'object') {
+    pool[status] = {
+      url: '',
+      // canvas: '',
+      credit: '',
+      caption: '',
+      title: '',
+      message: ''
+    }
+  }
+
+  $('#url').val(pool[status].url)
+  // $('#canvas').val(pool[status].canvas)
+  $('#Credit').val(pool[status].credit)
+  $('#Caption').val(pool[status].caption)
+  $('#title').val(pool[status].title)
+  $('#msg').val(pool[status].message)
+}
+
+$('#btn0').click(clickEvent)
+$('#btn0').click()
+
 $(".butt").click(function() {
   if (i < 10) {
-      $('<div style="display: none;"><button class="butt2">Untitled'+i+'</button></div>').appendTo($('.insert-links')).slideDown("fast");
+    $('<button>').attr({
+      id: 'btn' + i,
+      class: 'butt2'
+    }).text('Untitled' + i).click(clickEvent).appendTo($('.insert-links')).slideDown("fast");
       i++;
   }
+});
+
+$("#btn-submit").click(function() {
+  pool[status] = {
+    url: $('#url').val(),
+    // canvas: $('#canvas').val(),
+    credit: $('#Credit').val(),
+    caption :$('#Caption').val(),
+    title: $('#title').val(),
+    message: $('#msg').val()
+  }
+
+  var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(pool));
+  var dlAnchorElem = document.getElementById('downloadAnchorElem');
+  dlAnchorElem.setAttribute("href", dataStr);
+  dlAnchorElem.setAttribute("download", "result.json");
+  dlAnchorElem.click();
+
+  // var jsonString = JSON.stringify(pool);
+  //    $.ajax({
+  //         type: "POST",
+  //         url: "/storymap_fronted/php/outjson.php",
+  //         data: jsonString, 
+  //         cache: false
+  //     });
 });
 
 // 側邊選單
