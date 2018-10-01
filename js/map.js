@@ -1,3 +1,7 @@
+// 點選新的頁面把原本的lat和lon當成新的中心點
+// 下面的pool覆寫掉有lat和lon的pool了
+// 運用ajax把pool這個json轉到另一隻PHP檔案，在存入到server上
+
 // OSM map
 var map = new ol.Map({
   target: document.getElementById('map'),
@@ -24,6 +28,9 @@ map.on('dblclick', function(evt) {
     var res = str.split(" ");
     var lat = res[0]+"."+res[1]+res[2]+res[3];
     var lon = res[5]+"."+res[6]+res[7]+res[8];
+    pool[status].lon = lat;
+    pool[status].lat = lon;
+    // console.dir(pool);
 });
 
 // serach OSM
@@ -85,10 +92,7 @@ var clickEvent = function () {
   $(this).css('background', '#999')
 
   pool[status] = {
-    // lat: lat,
-    // lon: lon,
     url: $('#url').val(),
-    // canvas: $('#canvas').val(),
     credit: $('#Credit').val(),
     caption :$('#Caption').val(),
     title: $('#title').val(),
@@ -98,8 +102,6 @@ var clickEvent = function () {
   status = id
   if (typeof pool[status] !== 'object') {
     pool[status] = {
-      // lat: '',
-      // lon: '',
       url: '',
       credit: '',
       caption: '',
@@ -108,8 +110,6 @@ var clickEvent = function () {
     }
   }
 
-  // $('#lat').val(pool[status].lat)
-  // $('#lon').val(pool[status].lon)
   $('#url').val(pool[status].url)
   $('#Credit').val(pool[status].credit)
   $('#Caption').val(pool[status].caption)
@@ -130,23 +130,14 @@ $(".butt").click(function() {
   }
 });
 
-$("#btn-submit").click(function() {
-  pool[status] = {
-    // lat: $('#lat').val(),
-    // lon: $('#lon').val(),
-    url: $('#url').val(),
-    credit: $('#Credit').val(),
-    caption :$('#Caption').val(),
-    title: $('#title').val(),
-    message: $('#msg').val()
-  }
-
-  var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(pool));
-  var dlAnchorElem = document.getElementById('downloadAnchorElem');
-  dlAnchorElem.setAttribute("href", dataStr);
-  dlAnchorElem.setAttribute("download", "result.json");
-  dlAnchorElem.click();
-
+$("#btn-submit").click(function(e) {
+  e.preventDefault();
+  pool[status].url = $('#url').val(),
+  pool[status].credit =  $('#Credit').val(),
+  pool[status].caption = $('#Caption').val(),
+  pool[status].title = $('#title').val(),
+  pool[status].message = $('#msg').val()
+  console.log(pool);
   // var jsonString = JSON.stringify(pool);
   //    $.ajax({
   //         type: "POST",
@@ -155,6 +146,7 @@ $("#btn-submit").click(function() {
   //         cache: false
   //     });
 });
+
 
 // 側邊選單
 $(document).ready(function() {
