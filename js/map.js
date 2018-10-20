@@ -11,7 +11,7 @@ var map = new ol.Map({
     })
   ],
   view: new ol.View({
-    center: ol.proj.fromLonLat([120.58, 23.58]),
+    center: ol.proj.fromLonLat([0, 0]),
     zoom: 3
   })
 });
@@ -20,20 +20,27 @@ var map = new ol.Map({
 var popup = new ol.Overlay.Popup();
 map.addOverlay(popup);
 
+var lat = 0
+var lon = 0
+var coord = [0, 0]
 map.on('dblclick', function(evt) {
     var prettyCoord = ol.coordinate.toStringHDMS(ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326'), 2);
     popup.show(evt.coordinate, '<div>' + prettyCoord + '</div>');
     var str = prettyCoord;
     var str = str.replace("°","").replace("′","").replace("."," ").replace("″","").replace("°","").replace("′","").replace("."," ").replace("″","")
     var res = str.split(" ");
-    var lat = res[0]+"."+res[1]+res[2]+res[3];
-    var lon = res[5]+"."+res[6]+res[7]+res[8];
-    pool[status].lon = lat;
-    pool[status].lat = lon;
+    lat = map.getView().getCenter()[0];
+    lon = map.getView().getCenter()[1];
+    coord = evt.coordinate
+    console.log(lat)
+    console.log(lon)
+    console.log('dbclick')
+    // pool[status].lat = parseInt(lat);
+    // pool[status].lon = parseInt(lon);
     // console.dir(pool);
 });
 
-// serach OSM
+// search OSM
 //Instantiate with some options and add the Control
 var geocoder = new Geocoder('nominatim', {
   provider: 'osm',
@@ -96,8 +103,15 @@ var clickEvent = function () {
     credit: $('#Credit').val(),
     caption :$('#Caption').val(),
     title: $('#title').val(),
-    message: $('#msg').val()
+    message: $('#msg').val(),
+    lat: lat,
+    lon: lon,
+    coord: coord
   }
+  console.log(lat)
+  console.log(lon)
+  console.log('click')
+
 
   status = id
   if (typeof pool[status] !== 'object') {
@@ -106,7 +120,10 @@ var clickEvent = function () {
       credit: '',
       caption: '',
       title: '',
-      message: ''
+      message: '',
+      lat: 0,
+      lon: 0,
+      coord: [0, 0]
     }
   }
 
@@ -115,6 +132,23 @@ var clickEvent = function () {
   $('#Caption').val(pool[status].caption)
   $('#title').val(pool[status].title)
   $('#msg').val(pool[status].message)
+  lat = pool[status].lat
+  lon = pool[status].lon
+  coord = pool[status].coord
+
+  console.log(lat)
+  console.log(lon)
+  console.log('clicked')
+
+  map.setView(new ol.View({
+    center: [pool[status].lat, pool[status].lon],
+    zoom: 3
+  }))
+
+  if (coord[0] !== 0 && coord[1] !== 0) {
+    var prettyCoord = ol.coordinate.toStringHDMS(ol.proj.transform(coord, 'EPSG:3857', 'EPSG:4326'), 2);
+    popup.show(coord, '<div>' + prettyCoord + '</div>');
+  }
 }
 
 $('#btn0').click(clickEvent)
