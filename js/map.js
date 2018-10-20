@@ -1,5 +1,3 @@
-// 點選新的頁面把原本的lat和lon當成新的中心點
-// 下面的pool覆寫掉有lat和lon的pool了
 // 運用ajax把pool這個json轉到另一隻PHP檔案，在存入到server上
 
 // OSM map
@@ -11,7 +9,7 @@ var map = new ol.Map({
     })
   ],
   view: new ol.View({
-    center: [14016534.760885669, 2458443.6735774893],
+    center: coord,
     zoom: 3
   })
 });
@@ -26,18 +24,12 @@ var coord = [14016534.760885669, 2458443.6735774893]
 map.on('dblclick', function(evt) {
     var prettyCoord = ol.coordinate.toStringHDMS(ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326'), 2);
     popup.show(evt.coordinate, '<div>' + prettyCoord + '</div>');
-    var str = prettyCoord;
-    var str = str.replace("°","").replace("′","").replace("."," ").replace("″","").replace("°","").replace("′","").replace("."," ").replace("″","")
-    var res = str.split(" ");
     lat = map.getView().getCenter()[0];
     lon = map.getView().getCenter()[1];
     coord = evt.coordinate
     console.log(lat)
     console.log(lon)
     console.log('dbclick')
-    // pool[status].lat = parseInt(lat);
-    // pool[status].lon = parseInt(lon);
-    // console.dir(pool);
 });
 
 // search OSM
