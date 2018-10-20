@@ -11,7 +11,7 @@ var map = new ol.Map({
     })
   ],
   view: new ol.View({
-    center: ol.proj.fromLonLat([0, 0]),
+    center: [14016534.760885669, 2458443.6735774893],
     zoom: 3
   })
 });
@@ -22,7 +22,7 @@ map.addOverlay(popup);
 
 var lat = 0
 var lon = 0
-var coord = [0, 0]
+var coord = [14016534.760885669, 2458443.6735774893]
 map.on('dblclick', function(evt) {
     var prettyCoord = ol.coordinate.toStringHDMS(ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326'), 2);
     popup.show(evt.coordinate, '<div>' + prettyCoord + '</div>');
@@ -123,7 +123,7 @@ var clickEvent = function () {
       message: '',
       lat: 0,
       lon: 0,
-      coord: [0, 0]
+      coord: [14016534.760885669, 2458443.6735774893]
     }
   }
 
@@ -141,11 +141,11 @@ var clickEvent = function () {
   console.log('clicked')
 
   map.setView(new ol.View({
-    center: [pool[status].lat, pool[status].lon],
+    center: coord,
     zoom: 3
   }))
 
-  if (coord[0] !== 0 && coord[1] !== 0) {
+  if (lat !== 0 && lon !== 0) {
     var prettyCoord = ol.coordinate.toStringHDMS(ol.proj.transform(coord, 'EPSG:3857', 'EPSG:4326'), 2);
     popup.show(coord, '<div>' + prettyCoord + '</div>');
   }
